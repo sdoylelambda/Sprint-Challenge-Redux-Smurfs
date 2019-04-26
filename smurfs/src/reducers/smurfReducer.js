@@ -1,7 +1,12 @@
 import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, ADD_SMURF } from "../actions";
 
 const initialState = {
-   smurfs: [],
+   smurfs: [
+    {
+   name: '',
+   age: '',
+   height: '',
+   id: '',
    // put all inside of one object???
   //  fetchingSmurfs: false,
    isLoading: false,
@@ -9,7 +14,8 @@ const initialState = {
   //  deletingSmurf: false,
    error: null
  }
-
+]
+}
 
 /*
   You'll only need one smurf reducer for this project.
