@@ -12,10 +12,10 @@ class SmurfListView extends React.Component {
 
     }
     
-    function = () => fetchSmurf = e => {
-      e.preventDefault();
-      props.getSmurfs();
-    };
+    // function = () => fetchSmurf = e => {
+    //   e.preventDefault();
+    //   props.getSmurfs();
+    // };
     componentDidMount() {
       this.props.getSmurfs()
     }
@@ -50,7 +50,7 @@ class SmurfListView extends React.Component {
                 onChange={this.handleChange}
                 />
                <button onClick={this.addSmurf}>Add Smurf</button>
-               <button onClick={fetchSmurf}>Fetch Smurfs!</button>
+               {/* <button onClick={fetchSmurf}>Fetch Smurfs!</button> */}
         </div>
       );
     }
