@@ -7,7 +7,7 @@ const Smurf = props => {
            
 
 
-                <h2>{props.smurf.smurf.name}</h2>
+                <h2>{props.smurf.name}</h2>
                 <h2>{props.smurf.age}</h2>
                 <h2>{props.smurf.height}</h2>
                 <h2>{props.smurf.id}</h2>

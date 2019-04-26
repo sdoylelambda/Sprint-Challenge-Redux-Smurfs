@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { SmurfList } from "../components";
+import SmurfList from "../components/SmurfList";
 import { getSmurfs, addNewSmurf } from '../actions'
 
 class SmurfListView extends React.Component {
     constructor(props) {
       super(props);
       this.state ={
-          newSmurf: ""
+          name: "",
+          age: null,
+          height: ""
       }
 
     }
@@ -57,7 +59,7 @@ class SmurfListView extends React.Component {
 }
 
 const mapStateToProp = state => ({
-    smurfs: state.smurfReducer.smurfs.results,
+    smurfs: state.smurfReducer.smurfs,
     isLoading: state.smurfReducer.isLoading,
     error: state.smurfReducer.error,
     
@@ -65,6 +67,6 @@ const mapStateToProp = state => ({
 
 export default connect(
     mapStateToProp, 
-    { getSmurfs }
+    { getSmurfs, addNewSmurf }
     )(SmurfListView);
             
