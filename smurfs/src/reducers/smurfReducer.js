@@ -3,7 +3,7 @@ import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, ADD_SMU
 const initialState = {
    smurfs: [],
    // put all inside of one object???
-   fetchingSmurfs: false,
+  //  fetchingSmurfs: false,
    isLoading: false,
   //  updatingSmurf: false,
   //  deletingSmurf: false,
@@ -40,15 +40,15 @@ export const smurfReducer = (state = initialState, action) => {
       isLoading: false,
       smurfs: action.payload
     }
-    case ADD_SMURF:
-        const newSmurf = {
-          name: action.payload,
-          isLoading: false
-        };
-        return {
-          ...state, 
-          newSmurf,
-        }
+    // case ADD_SMURF:
+    //     const newSmurf = {
+    //       name: action.payload,
+    //       isLoading: false
+    //     };
+    //     return {
+    //       ...state, 
+    //       newSmurf,
+    //     }
     
     default:
     return state;
