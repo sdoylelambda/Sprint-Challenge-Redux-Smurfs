@@ -47,7 +47,7 @@ export const smurfReducer = (state = initialState, action) => {
         };
         return {
           ...state, 
-          newSmurf,
+          smurf: newSmurf
         }
     
     default:
