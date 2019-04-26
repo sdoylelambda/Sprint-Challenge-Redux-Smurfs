@@ -40,15 +40,15 @@ export const smurfReducer = (state = initialState, action) => {
       isLoading: false,
       smurfs: action.payload
     }
-    // case ADD_SMURF:
-    //     const newSmurf = {
-    //       name: action.payload,
-    //       isLoading: false
-    //     };
-    //     return {
-    //       ...state, 
-    //       newSmurf,
-    //     }
+    case ADD_SMURF:
+        const newSmurf = {
+          name: action.payload,
+          isLoading: false
+        };
+        return {
+          ...state, 
+          newSmurf,
+        }
     
     default:
     return state;
