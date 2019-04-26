@@ -4,17 +4,21 @@ import SmurfList from "../components/SmurfList";
 import { getSmurfs, addNewSmurf } from '../actions'
 
 class SmurfListView extends React.Component {
-    // constructor(props) {
-    //   super(props);
-      state = {
-          item: this.props.activeItem || {
-            name: "",
-            age: null,
-            height: null,
-            id: null
+    constructor(props) {
+      super(props);
+      this.state = {
+           item: this.props.activeItem || {
+      
+            name: '',
+            age: '',
+            height: '',
+            id: '',
+            isLoading: false,
+            error: null
              }
         }
-    // }
+    }
+    
     componentDidMount() {
         this.props.getSmurfs()
     }
@@ -46,14 +50,16 @@ class SmurfListView extends React.Component {
 
     handleSubmit = e => {
       
-         this.props.addSmurf(e, this.state.item);
+         this.props.addSmurf(e, this.state);
         
         this.setState({
             item: {
-                name: "",
-                age: null,
-                height: "",
-                id: null
+                name: '',
+                age: '',
+                height: '',
+                id: '',
+                isLoading: false,
+                error: null
             }
         })
     }
@@ -64,19 +70,22 @@ class SmurfListView extends React.Component {
     // };
     
     handleChange = e => {
-        this.setState({ newSmurf: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
+        // this.setState({ item: e.target.value });
     };
 
     addSmurf = e => {
         e.preventDefault();
-        this.props.addNewSmurf(e, this.state.addNewSmurf);
+        console.log(e);
+        // this.props.addNewSmurf(e, this.state.addNewSmurf);
+        this.props.addNewSmurf(this.state);
         this.setState({         
-            item: {
-                name: "",
-                age: null,
-                height: "",
-                id: null
-            }
+          
+                name: '',
+                age: '',
+                height: '',
+                id: ''
+            
         });
     }
     
@@ -91,43 +100,47 @@ class SmurfListView extends React.Component {
             <h1>SmurfVille</h1>
                 <SmurfList smurfs={this.props.smurfs} />
 
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.addSmurf}>
+                <input
+                    type='text'
+                    name='name'
+                    placeholder='name'
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                    
+                />
+                <div className="baseline" />
+
                 <input
                     type="text"
-                    name="name"
-                    onChange={this.changeHandler}
-                    placeholder="name"
-                    value={this.state.item.name}
-                />
-                <div className="baseline" />
-
-                <input
-                    type="number"
                     name="age"
-                    onChange={this.changeHandler}
                     placeholder="age"
-                    value={this.state.item.age}
+                    value={this.state.age}
+                    onChange={this.handleChange}
                 />
                 <div className="baseline" />
 
                 <input
-                    type="string"
+                    type="text"
                     name="height"
-                    onChange={this.changeHandler}
                     placeholder="height"
-                    value={this.state.item.height}
+                    value={this.state.height}
+                    onChange={this.handleChange}
+                    
                 />
                 <div className="baseline" />
 
                 <input
-                    type="number"
+                    type="text"
                     name="id"
-                    onChange={this.changeHandler}
                     placeholder="id"
-                    value={this.state.item.id}
+                    value={this.state.id}
+                    onChange={this.handleChange}
+                    
                 />
                 <div className="baseline" />
-                <button onClick={this.activeItem}>Add smurf</button>
+                {/* <button>add smurf</button> */}
+                <button onClick={this.addSmurf}>Add smurf</button>
                 {/* <button onClick={this.handleSubmit}>Add smurf</button> */}
                 </form>
                 </div>
@@ -139,7 +152,11 @@ const mapStateToProp = state => ({
     smurfs: state.smurfReducer.smurfs,
     isLoading: state.smurfReducer.isLoading,
     error: state.smurfReducer.error,
-    
+    name: state.smurfReducer.name,
+    age: state.smurfReducer.age,
+    height: state.smurfReducer.height,
+    id: state.smurfReducer.id,
+    item: state.smurfReducer.item
 })
 
 export default connect(
