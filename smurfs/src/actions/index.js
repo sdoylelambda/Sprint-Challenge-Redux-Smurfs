@@ -13,17 +13,10 @@ export const getSmurfs = () => dispatch => {
     .catch(err => dispatch({type: FETCH_SMURFS_FAILURE, payload: err}))
 }
 
-export function addNewSmurf(newSmurf) {
-  return {
-    type: ADD_SMURF,
-    payload: newSmurf
-  };
+export const addNewSmurf = newSmurf => dispatch => {
+  dispatch({type: ADD_SMURF })
+  axios
+    .post('http://localhost:3333/smurfs', newSmurf)
+    .then(res => dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: FETCH_SMURFS_FAILURE, payload: err }))
 }
-
-// export const addNewSmurf = newSmurf => dispatch => {
-//   dispatch({type: ADD_SMURF })
-//   axios
-//     .post('http://localhost:3333/smurfs', newSmurf)
-//     .then(res => dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data }))
-//     .catch(err => dispatch({ type: FETCH_SMURFS_FAILURE, payload: err }))
-// }

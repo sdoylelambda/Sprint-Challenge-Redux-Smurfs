@@ -3,27 +3,15 @@ import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, ADD_SMU
 const initialState = {
    smurfs: [
     {
-   name: '',
-   age: '',
-   height: '',
-   id: '',
-   // put all inside of one object???
-  //  fetchingSmurfs: false,
-   isLoading: false,
-  //  updatingSmurf: false,
-  //  deletingSmurf: false,
-   error: null
- }
-]
+      name: '',
+      age: '',
+      height: '',
+      id: '',
+      isLoading: false,
+      error: null
+    }
+  ]
 }
-
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
 
 export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -55,7 +43,6 @@ export const smurfReducer = (state = initialState, action) => {
         ...state, 
         smurf: newSmurf
       }
-    
     default:
     return state;
   }

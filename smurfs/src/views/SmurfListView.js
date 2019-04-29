@@ -7,19 +7,19 @@ class SmurfListView extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-           item: this.props.activeItem || {
-      
-            name: '',
-            age: '',
-            height: '',
-            id: '',
-            isLoading: false,
-            error: null
+           item: {
+                name: '',
+                age: '',
+                height: '',
+                id: '',
+                isLoading: false,
+                error: null
              }
         }
     }
     
     componentDidMount() {
+        console.log("CDM fired")
         this.props.getSmurfs()
     }
 
@@ -139,8 +139,8 @@ class SmurfListView extends React.Component {
                     
                 />
                 <div className="baseline" />
-                {/* <button>add smurf</button> */}
-                <button onClick={this.addSmurf}>Add smurf</button>
+                <button>add smurf</button>
+                {/* <button onClick={this.addSmurf}>Add smurf</button> */}
                 {/* <button onClick={this.handleSubmit}>Add smurf</button> */}
                 </form>
                 </div>
@@ -148,16 +148,19 @@ class SmurfListView extends React.Component {
             }
 }
 
-const mapStateToProp = state => ({
-    smurfs: state.smurfReducer.smurfs,
-    isLoading: state.smurfReducer.isLoading,
-    error: state.smurfReducer.error,
-    name: state.smurfReducer.name,
-    age: state.smurfReducer.age,
-    height: state.smurfReducer.height,
-    id: state.smurfReducer.id,
-    item: state.smurfReducer.item
-})
+const mapStateToProp = state => {
+    console.log(state)
+    return {
+        smurfs: state.smurfReducer.smurfs,
+        isLoading: state.smurfReducer.isLoading,
+        error: state.smurfReducer.error,
+        name: state.smurfReducer.name,
+        age: state.smurfReducer.age,
+        height: state.smurfReducer.height,
+        id: state.smurfReducer.id,
+        item: state.smurfReducer.item
+    }
+}
 
 export default connect(
     mapStateToProp, 
