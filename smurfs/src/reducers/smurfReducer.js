@@ -43,12 +43,7 @@ export const smurfReducer = (state = initialState, action) => {
         ...state, 
         smurf: newSmurf
       }
-    //   case ADD_SMURFS_START:
-    //   return {
-    //     ...state,
-    //   error: "",
-    //   isLoading: true
-    //   }
+
       case ADD_SMURFS_SUCCESS:
       return {
         ...state,
@@ -62,9 +57,7 @@ export const smurfReducer = (state = initialState, action) => {
         error: action.payload,
         isLoading: false
       }
-    default:
-    return state;
-  }
-
-  
+      default:
+      return state;
+    }
 };

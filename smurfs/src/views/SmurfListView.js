@@ -11,7 +11,7 @@ class SmurfListView extends React.Component {
                 name: '',
                 age: '',
                 height: '',
-                id: '',
+                // id: '',
                 isLoading: false,
                 error: null
              }
@@ -64,20 +64,13 @@ class SmurfListView extends React.Component {
         })
     }
     
-    // fetchSmurf = e => {
-    //   e.preventDefault();
-    //   this.props.getSmurfs();
-    // };
-    
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
-        // this.setState({ item: e.target.value });
     };
 
     addSmurf = e => {
         e.preventDefault();
         console.log(e);
-        // this.props.addNewSmurf(e, this.state.addNewSmurf);
         this.props.addNewSmurf(this.state);
         this.setState({         
           
@@ -85,7 +78,6 @@ class SmurfListView extends React.Component {
                 age: '',
                 height: '',
                 id: ''
-            
         });
     }
     
@@ -106,8 +98,7 @@ class SmurfListView extends React.Component {
                     name='name'
                     placeholder='name'
                     value={this.state.name}
-                    onChange={this.handleChange}
-                    
+                    onChange={this.handleChange} 
                 />
                 <div className="baseline" />
 
@@ -126,7 +117,6 @@ class SmurfListView extends React.Component {
                     placeholder="height"
                     value={this.state.height}
                     onChange={this.handleChange}
-                    
                 />
                 <div className="baseline" />
 
@@ -136,16 +126,13 @@ class SmurfListView extends React.Component {
                     placeholder="id"
                     value={this.state.id}
                     onChange={this.handleChange}
-                    
                 />
                 <div className="baseline" />
-                <button>add smurf</button>
-                {/* <button onClick={this.addSmurf}>Add smurf</button> */}
-                {/* <button onClick={this.handleSubmit}>Add smurf</button> */}
+                    <button>add smurf</button>
                 </form>
                 </div>
             );
-            }
+         }
 }
 
 const mapStateToProp = state => {
