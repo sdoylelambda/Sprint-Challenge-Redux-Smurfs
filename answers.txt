@@ -1,0 +1,17 @@
+Q.  In your own words, describe actions, reducers and the store and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application? 
+
+A. Actions handle api requests,
+   reducers set up initial state and tell what actions to fire,
+   store gives the app access to reducers and middleware.
+
+
+
+Q.  What is the difference between Application state and Component state? When would be a good time to use one over the other? 
+
+A. The difference between app state and component state is, app state is the "global" state and has access to all components in its tree, where component state is set to a single component that cannot be seen from outside of that component.
+
+
+
+Q.  Describe redux-thunk, what does it allow us to do? How does it change our action-creators? 
+
+A. Redux-thunk is a function that returns a function that is a asynchronous, which is useful for things like making an api request which will take an undetermined amount of time.
